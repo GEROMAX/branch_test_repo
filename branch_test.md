@@ -41,3 +41,13 @@
 1. masterを分岐直前まで一つずつ打ち消す
 1. masterにreleaseをマージ
 1. releaseのHEADにタグを打つ
+
+# 特定ファイルを除外したマージのテスト
+
+## 手順
+1. 任意のスコープでgitのconfigにマージ時の独自挙動(カレントブランチ優先)を定義  
+git config --local merge.ours.driver true
+1. 属性ファイル(.gitattributes)ファイルをリポジトリのルートに作成
+1. 属性ファイルに除外したいファイルのマージ時の挙動を記述(configに定義したやつ)  
+hogehogeファイル merge=ours
+1. マージする
